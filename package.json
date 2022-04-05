@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "0.0.1",
-  "main": "main.ts",
+  "main": "dist/main.js",
   "description": "",
   "author": "",
   "private": true,
@@ -11,12 +11,10 @@
     "npm": "8.1.2"
   },
   "scripts": {
-
     "prebuild": "rimraf dist",
     "build": "nest build",
-    "postinstall": "npm run build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest main.ts",
+    "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
