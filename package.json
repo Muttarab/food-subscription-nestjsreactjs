@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "0.0.1",
-  "main": "dist/main.js",
+  "main": "main.js",
   "description": "",
   "author": "",
   "private": true,
