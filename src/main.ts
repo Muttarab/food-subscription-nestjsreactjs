@@ -4,7 +4,7 @@ import * as cookieParser from "cookie-parser";
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 require('dotenv').config({ path: '.env' })
 async function bootstrap() {
-  const ROOT = process.env.ROOT || 8000
+  const PORT = process.env.PORT || 8000
   const app = await NestFactory.create(AppModule);
   const options = new DocumentBuilder()
     .setTitle('Food subscription API')
@@ -18,6 +18,6 @@ async function bootstrap() {
     origin: 'http://localhost:3000',
     credentials: true
   })
-  await app.listen(ROOT);
+  await app.listen(PORT);
 }
 bootstrap();
