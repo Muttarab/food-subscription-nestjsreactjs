@@ -86,7 +86,7 @@ const Admindashboard = () => {
             history.push('/adminlogin')
         }
         const fetchData = async () => {
-            const response = await axios.get(`http://localhost:8000/paidinvoice/getAll`)
+            const response = await axios.get(`/paidinvoice/getAll`)
             const object = {}
             let i = 0
             while (i < response.data.length) {
@@ -102,7 +102,7 @@ const Admindashboard = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get("http://localhost:8000/weeklymenu/getAll")
+            const response = await axios.get(`/weeklymenu/getAll`)
             setWeeklymenudata(response.data);
         }
         fetchData()
@@ -113,7 +113,7 @@ const Admindashboard = () => {
     const createWeeklymenu = async (dispatch, { day, date, items }) => {
         dispatch(weeklymenuStart());
         try {
-            const result = await axios.post(`http://localhost:8000/weeklymenu/upload/${admin.id}`,
+            const result = await axios.post(`/weeklymenu/upload/${admin.id}`,
                 { day, date, items }, {
                 headers: {
                     Authorization: "Bearer " + JSON.parse(localStorage.getItem('currentAdmin')).jwt
