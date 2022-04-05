@@ -6,7 +6,8 @@ const cookieParser = require("cookie-parser");
 const swagger_1 = require("@nestjs/swagger");
 require('dotenv').config({ path: '.env' });
 async function bootstrap() {
-    const ROOT = process.env.ROOT || 8000;
+    const PORT = process.env.PORT || 8000;
+    const host = '0.0.0.0';
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     const options = new swagger_1.DocumentBuilder()
         .setTitle('Food subscription API')
@@ -20,7 +21,7 @@ async function bootstrap() {
         origin: 'http://localhost:3000',
         credentials: true
     });
-    await app.listen(ROOT);
+    await app.listen(PORT, host, () => console.log(`server is running on port ${PORT}`));
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

@@ -5,6 +5,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 require('dotenv').config({ path: '.env' })
 async function bootstrap() {
   const PORT = process.env.PORT || 8000
+  const host = '0.0.0.0'
   const app = await NestFactory.create(AppModule);
   const options = new DocumentBuilder()
     .setTitle('Food subscription API')
@@ -18,6 +19,6 @@ async function bootstrap() {
     origin: 'http://localhost:3000',
     credentials: true
   })
-  await app.listen(PORT);
+  await app.listen(PORT,host,()=> console.log(`server is running on port ${PORT}`));
 }
 bootstrap();
