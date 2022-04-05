@@ -1,9 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as cookieParser from "cookie-parser";
+import path from 'path'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-
+require('dotenv').config({ path: '.env' })
 async function bootstrap() {
+  const ROOT = process.env.ROOT || 8000
   const app = await NestFactory.create(AppModule);
   const options = new DocumentBuilder()
     .setTitle('Food subscription API')
@@ -12,11 +14,12 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
+  app.setGlobalPrefix('api');
   app.use(cookieParser());
   app.enableCors({
     origin: 'http://localhost:3000',
     credentials: true
   })
-  await app.listen(8000);
+  await app.listen(ROOT);
 }
 bootstrap();

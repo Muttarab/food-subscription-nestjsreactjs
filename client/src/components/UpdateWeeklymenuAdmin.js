@@ -38,7 +38,7 @@ const UpdateWeeklymenu = ({ match }) => {
     const adminid = admin.id;
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get(`http://localhost:8000/weeklymenu/${match.params.id}`)
+            const response = await axios.get(`/weeklymenu/${match.params.id}`)
             setDay(response.data.day);
             setDate(response.data.date);
             setItems(response.data.items);
@@ -55,7 +55,7 @@ const UpdateWeeklymenu = ({ match }) => {
     const updateWeeklymenu = async (dispatch, { day, date, items }) => {
         dispatch(weeklymenuStart());
         try {
-            const result = await axios.put(`http://localhost:8000/weeklymenu/${match.params.id}`,
+            const result = await axios.put(`/weeklymenu/${match.params.id}`,
                 { day, date, items }, {
                 headers: {
                     Authorization: "Bearer " + JSON.parse(localStorage.getItem('currentAdmin')).jwt

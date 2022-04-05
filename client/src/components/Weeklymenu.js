@@ -76,7 +76,7 @@ export default function Weeklymenu() {
             history.push('/login')
         }
         const fetchData = async () => {
-            const response = await axios.get("http://localhost:8000/weeklymenu/getAll")
+            const response = await axios.get(`/weeklymenu/getAll`)
             setPostdata(response.data);
             console.log(response.data)
         }
@@ -100,7 +100,7 @@ export default function Weeklymenu() {
     const createPayment = async (dispatch, { paymenttype, price }) => {
         dispatch(paymentStart());
         try {
-            const result = await axios.post(`http://localhost:8000/payment/create/${user.id}`,
+            const result = await axios.post(`/payment/create/${user.id}`,
                 { paymenttype, price }, {
                 headers: {
                     Authorization: "Bearer " + JSON.parse(localStorage.getItem('currentUser')).jwt

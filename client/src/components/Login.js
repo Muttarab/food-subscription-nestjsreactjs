@@ -37,7 +37,7 @@ const Login = () => {
     const login = async (dispatch, user) => {
         dispatch(loginStart());
         try {
-            const result = await axios.post("http://localhost:8000/client/login", {
+            const result = await axios.post(`/client/login`, {
                 email,
                 password,
             });

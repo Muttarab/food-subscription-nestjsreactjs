@@ -33,7 +33,7 @@ const Adminlogin = () => {
     const login = async (dispatch, admin) => {
         dispatch(loginStart());
         try {
-            const result = await axios.post("http://localhost:8000/admin/login", {
+            const result = await axios.post(`/admin/login`, {
                 email,
                 password,
             });
