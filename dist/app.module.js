@@ -26,7 +26,7 @@ let AppModule = class AppModule {
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [config_1.ConfigModule.forRoot(), serve_static_1.ServeStaticModule.forRoot({
-                rootPath: (0, path_1.join)(__dirname, 'client/build'),
+                rootPath: (0, path_1.join)(__dirname, '..', 'client/build'),
             }), typeorm_1.TypeOrmModule.forRoot(typeorm_config_1.typeOrmConfig), platform_express_1.MulterModule.register({
                 dest: './files',
             }), client_module_1.ClientModule, payment_module_1.PaymentModule, paidinvoice_module_1.PaidinvoiceModule, weeklymenu_module_1.WeeklymenuModule, admin_module_1.AdminModule],
