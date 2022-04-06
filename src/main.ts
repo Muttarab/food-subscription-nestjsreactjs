@@ -2,8 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as cookieParser from "cookie-parser";
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import * as express from 'express';
-import path, { join } from 'path';
+
 require('dotenv').config({ path: '.env' })
 async function bootstrap() {
   const PORT = process.env.PORT || 8000
@@ -16,7 +15,6 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
-  app.use(express.static(join(__dirname, "client/build")));
   app.use(cookieParser());
   app.enableCors({
     origin: 'http://localhost:3000',

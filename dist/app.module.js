@@ -19,11 +19,15 @@ const weeklymenu_module_1 = require("./weeklymenu/weeklymenu.module");
 const admin_module_1 = require("./admin/admin.module");
 const platform_express_1 = require("@nestjs/platform-express");
 const config_1 = require("@nestjs/config");
+const serve_static_1 = require("@nestjs/serve-static");
+const path_1 = require("path");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [config_1.ConfigModule.forRoot(), typeorm_1.TypeOrmModule.forRoot(typeorm_config_1.typeOrmConfig), platform_express_1.MulterModule.register({
+        imports: [config_1.ConfigModule.forRoot(), serve_static_1.ServeStaticModule.forRoot({
+                rootPath: (0, path_1.join)(__dirname, '..', 'client/build'),
+            }), typeorm_1.TypeOrmModule.forRoot(typeorm_config_1.typeOrmConfig), platform_express_1.MulterModule.register({
                 dest: './files',
             }), client_module_1.ClientModule, payment_module_1.PaymentModule, paidinvoice_module_1.PaidinvoiceModule, weeklymenu_module_1.WeeklymenuModule, admin_module_1.AdminModule],
         controllers: [app_controller_1.AppController],
