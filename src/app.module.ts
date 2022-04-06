@@ -13,9 +13,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 @Module({
-  imports: [ConfigModule.forRoot(), ServeStaticModule.forRoot({
-    rootPath: join(__dirname,'..','client/build'),
-  }), TypeOrmModule.forRoot(typeOrmConfig), MulterModule.register({
+  imports: [ConfigModule.forRoot(),TypeOrmModule.forRoot(typeOrmConfig), MulterModule.register({
     dest: './files',
   }), ClientModule, PaymentModule, PaidinvoiceModule, WeeklymenuModule, AdminModule],
   controllers: [AppController],
