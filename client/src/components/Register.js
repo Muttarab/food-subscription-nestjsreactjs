@@ -27,7 +27,7 @@ const Register = () => {
             history.push('/admindashboard')
         }
         if (user) {
-            history.push('/home')
+            history.push('/')
         }
     });
     const handleSubmit = async (e) => {

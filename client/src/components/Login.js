@@ -27,7 +27,7 @@ const Login = () => {
             history.push('/admindashboard')
         }
         if(user){
-            history.push('/home')
+            history.push('/')
         }
     });
     const handleSubmit = async (e) => {
@@ -43,7 +43,7 @@ const Login = () => {
             });
             dispatch(loginSuccess(result.data));
             localStorage.setItem('currentUser',JSON.stringify(result.data))
-            history.push('/home')
+            history.push('/')
         } catch (err) {
             dispatch(loginFailure());
         }

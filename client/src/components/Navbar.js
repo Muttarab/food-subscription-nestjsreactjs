@@ -38,7 +38,7 @@ const Navbar = () => {
                     <>
                         {
                             <>
-                                <Link to='/home' className={classes.link}>
+                                <Link to='/' className={classes.link}>
                                     <Typography>HOME</Typography>
                                 </Link>
                                 <Link onClick={logout} to='/login' className={classes.link}>
