@@ -37,7 +37,7 @@ const Login = () => {
     const login = async (dispatch, user) => {
         dispatch(loginStart());
         try {
-            const result = await axios.post(`/client/login`, {
+            const result = await axios.post(`v1/client/login`, {
                 email,
                 password,
             });

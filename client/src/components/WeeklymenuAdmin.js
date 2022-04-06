@@ -55,7 +55,7 @@ const WeeklymenuAdmin = ({ weeklymenu }) => {
         e.preventDefault();
         try {
             await axios.delete(
-                `/weeklymenu/${weeklymenu.id}`,
+                `v1/weeklymenu/${weeklymenu.id}`,
                 {
                     headers: {
                         Authorization:

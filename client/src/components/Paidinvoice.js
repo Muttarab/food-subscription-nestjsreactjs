@@ -71,8 +71,8 @@ const Paidinvoice = () => {
     }, [image])
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get(`/paidinvoice/getPaidinvoicebyClientId/${user.id}`)
-            const responseimg = await axios.get(`/paidinvoice/getImg/${response.data.receipt}`)
+            const response = await axios.get(`v1/paidinvoice/getPaidinvoicebyClientId/${user.id}`)
+            const responseimg = await axios.get(`v1/paidinvoice/getImg/${response.data.receipt}`)
             setImageurlbef(responseimg.config.url)
         }
         fetchData()
@@ -85,7 +85,7 @@ const Paidinvoice = () => {
         try {
             const data = new FormData();
             data.append("paidreceipts", image);
-            const result = await axios.post(`/paidinvoice/upload/${user.id}`,
+            const result = await axios.post(`v1/paidinvoice/upload/${user.id}`,
                 data, {
                 headers: {
                     Authorization: "Bearer " + JSON.parse(localStorage.getItem('currentUser')).jwt
