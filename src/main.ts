@@ -2,10 +2,13 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as cookieParser from "cookie-parser";
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as express from 'express';
+import { join } from 'path';
 require('dotenv').config({ path: '.env' })
 async function bootstrap() {
   const PORT = process.env.PORT || 8000
   const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix('v1');
   const options = new DocumentBuilder()
     .setTitle('Food subscription API')
     .setDescription('Food subscription api with Nest Js')
@@ -13,8 +16,8 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
+  app.use(express.static(join(process.cwd(), '../client/dist/')));
   app.use(cookieParser());
-  app.setGlobalPrefix('apis');
   app.enableCors({
     origin: 'http://localhost:3000',
     credentials: true
