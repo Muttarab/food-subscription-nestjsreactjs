@@ -18,7 +18,7 @@ async function bootstrap() {
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, options);
     swagger_1.SwaggerModule.setup('api', app, document);
-    app.use(express.static((0, path_1.join)(process.cwd(), '../client/dist/')));
+    app.use(express.static((0, path_1.join)(__dirname, "client/build")));
     app.use(cookieParser());
     app.enableCors({
         origin: 'http://localhost:3000',
